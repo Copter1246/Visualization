@@ -1,0 +1,95 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling on the main document */
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#details-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 500px; /* Match the width defined in the JavaScript */
+  max-height: 90vh; /* Maximum height of 90% viewport height */
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Above the map */
+  overflow-y: auto; /* Enable scrolling for the details panel */
+}
+
+#details-panel * {
+  pointer-events: auto;
+}
+
+svg {
+  cursor: move; /* Indicates the map can be moved */
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+body {
+  background: rgb(90, 140, 201);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.country {
+  fill: #eee;
+  stroke: #ccc;
+  stroke-width: 0.5px;
+}
+
+.teams {
+  fill: rgba(251, 251, 251, 0.74);
+  stroke: rgb(208, 208, 208);
+  stroke-width: 1px;
+  background-image: url(map.png);
+  background-repeat: no-repeat;
+  width: 85px;
+  height: 85px;
+}
+
+.City {
+  fill: #333;
+  font-size: 12px;
+  text-anchor: middle;
+}
+
+.Capital {
+  fill: #b30000;
+  font-size: 16px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+/* Position and style the tooltip */
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 5px;
+  background: white;
+  border-radius: 5px;
+  pointer-events: none;
+}
