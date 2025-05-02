@@ -179,6 +179,10 @@ const City_data = [{"lng": -1.254449, "City": "Oxford", "lat": 51.754845},
 
 // Capital city data for the map
 const capital_city = [ {"lng": -0.118092-0.5, "City": "London⭐", "lat": 51.509865+0.05},];
+
+// Hide the details panel initially
+document.getElementById("details-panel").style.display = "none";
+
 var margin = {top: 0, left:0,right:0,bottom:0},
  height = 1350,
  width = 1750;
@@ -219,6 +223,9 @@ function showDetails(d) {
   console.log("Clicked on image:", d.Teams);
   console.log("Stadium data:", d.Stadium); // Add this line to debug stadium data
   
+  // Display the details panel
+  document.getElementById("details-panel").style.display = "block";
+
   // Clear the current contents of the details panel
   var panel = d3.select("#details-panel");
   panel.selectAll("*").remove();
@@ -260,7 +267,7 @@ function showDetails(d) {
   var x = d3.scaleBand()
     .range([0, panelWidth - margin.left - margin.right])
     .padding(0.1)
-    .domain(d.Point.map(function(d, i) { return i + 1; }));
+    .domain(["2019-20", "2020-21", "2021-22", "2022-23", "2023-24"]);
 
   var y = d3.scaleLinear()
     .range([chartHeight - margin.top - margin.bottom, 0])
@@ -293,7 +300,7 @@ function showDetails(d) {
     .data(d.Point)
     .enter().append("rect")
     .attr("class", "bar")
-    .attr("x", function(d, i) { return x(i + 1); })
+    .attr("x", function(d, i) { return x(["2019-20", "2020-21", "2021-22", "2022-23", "2023-24"][i]); })
     .attr("y", function(d) { return y(d); })
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return chartHeight - margin.top - margin.bottom - y(d); });
